@@ -17,12 +17,12 @@ class FirstWindow:
         self.font_title = ("TKDefaultFont", 20, "bold")
         self.font = ("TKDefaultFont", 16, "bold")
 
-        # menubar = Menu(self.window)
-        # self.window.config(menu=menubar)
+        menubar = Menu(self.window)
+        self.window.config(menu=menubar)
 
-        # list_menu = Menu(menubar, tearoff=0)
-        # menubar.add_cascade(label="File", menu=list_menu)
-        # list_menu.add_command(label="Exit", command=self.window.quit)
+        list_menu = Menu(menubar, tearoff=0)
+        menubar.add_cascade(label="File", menu=list_menu)
+        list_menu.add_command(label="Exit", command=self.window.quit)
 
         frame1 = Frame(self.window)
         frame1.pack(padx=10, pady=10)
@@ -647,6 +647,12 @@ class ThirdWindow:
         self.search_food = StringVar()
         self.search_food.trace("w", self.search_food_callback)
         Entry(frame2, textvariable=self.search_food).grid(row=3, column=2, sticky=NSEW)
+        #create sort by dropdown menu
+        self.sort = StringVar()
+        self.sort.set("Sort By")
+        self.sort.trace("w", self.sort_callback)
+        self.sort_menu = OptionMenu(frame2, self.sort, "Sort By", "Calories (Low to High)", "Calories (High to Low)", "Alphabetical (A-Z)", "Alphabetical (Z-A)")
+        self.sort_menu.grid(row=3, column=3, sticky=NSEW)
 
         self.food_list = []
         frame3 = Frame(self.window3)
@@ -654,7 +660,7 @@ class ThirdWindow:
         self.list_box = Listbox(frame3, height=10, width=50)
         self.list_box.grid(row=4, column=1, sticky=NSEW)
         self.list_box.bind("<Button-1>", self.selected_food)
-
+        
         self.load_data()
 
         frame4 = Frame(self.window3)
@@ -670,6 +676,7 @@ class ThirdWindow:
         frame5 = Frame(self.window3)
         frame5.pack(padx=10, pady=10)
         Button(frame5, text="Graph Compare", command=self.bar_graph).pack(padx=10, pady=10, side=LEFT)
+
 
         Button(self.window3, text="Back", command=self.back).pack(padx=10, pady=10, side=BOTTOM)
 
@@ -744,7 +751,28 @@ class ThirdWindow:
         except Exception as e:
             messagebox.showerror("An error occurred:", e)
 
-    
+    def sort_callback(self, *args):
+        sort_option = self.sort.get()
+        if sort_option == "Calories (Low to High)":
+            self.food_list.sort(key=lambda x: x[1]) #sort by calories ascending
+            self.list_box.delete(0, END)
+            for food_name, calories in self.food_list:
+                self.list_box.insert(END, f"{food_name} - {calories} calories")
+        elif sort_option == "Calories (High to Low)":
+            self.food_list.sort(key=lambda x: x[1], reverse=True) #reverse=True means descending order
+            self.list_box.delete(0, END)
+            for food_name, calories in self.food_list:
+                self.list_box.insert(END, f"{food_name} - {calories} calories")
+        elif sort_option == "Alphabetical (A-Z)":
+            self.food_list.sort(key=lambda x: x[0]) #sort by food name ascending
+            self.list_box.delete(0, END)
+            for food_name, calories in self.food_list:
+                self.list_box.insert(END, f"{food_name} - {calories} calories")
+        elif sort_option == "Alphabetical (Z-A)":
+            self.food_list.sort(key=lambda x: x[0], reverse=True)
+            self.list_box.delete(0, END)
+            for food_name, calories in self.food_list:
+                self.list_box.insert(END, f"{food_name} - {calories} calories")
+
 if __name__ == "__main__":
     FirstWindow()
-    
