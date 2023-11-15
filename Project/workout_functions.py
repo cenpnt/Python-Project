@@ -24,7 +24,7 @@ class Page(Toplevel):
 
 class Day1Beginner(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self) # Initialize the frame
+        super().__init__() # Initialize the frame
         self.second_window = second_window # Save the reference to the second window
         self.window4 = None # No window yet
         
@@ -231,7 +231,7 @@ class Legs1Begin(Page):
 
 class Day1Intermediate(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window5 = None
 
@@ -431,7 +431,7 @@ class Legs1Inter(Page):
 
 class Day1Advanced(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window6 = None
 
@@ -636,7 +636,7 @@ class Legs1Adv(Page):
 
 class Day2Beginner(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window7 = None
 
@@ -648,7 +648,7 @@ class Day2Beginner(Frame):
         menubar.add_cascade(label="Upper2", menu=workouts_menu, command=self.open_upper_workout2)
         menubar.add_cascade(label="Lower", menu=workouts_menu, command=self.open_lower_workout)
         menubar.add_cascade(label = "Back to Previous Page", menu = workouts_menu, command = self.back)
-       
+
         self.open_upper_workout()
 
     def open_upper_workout(self):
@@ -824,7 +824,7 @@ class Lower2Begin(Page):
 
 class Day2Intermediate(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window8 = None
 
@@ -1017,7 +1017,7 @@ class Lower2Inter(Page):
 
 class Day2Advanced(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window9 = None
 
@@ -1214,7 +1214,7 @@ class Lower2Adv(Page):
 
 class Day3Beginner(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window10 = None
 
@@ -1436,7 +1436,7 @@ class Leg3Begin(Page):
 
 class Day3Intermediate(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window11 = None
 
@@ -1658,7 +1658,7 @@ class Leg3Inter(Page):
 
 class Day3Advanced(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window12 = None
 
@@ -1900,7 +1900,7 @@ class Leg3Adv(Page):
 
 class Day4Beginner(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window13 = None
 
@@ -1973,7 +1973,7 @@ class Cardio4Begin(Page):
 
 class Day4Intermediate(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window14 = None
 
@@ -2015,7 +2015,7 @@ class Day4Intermediate(Frame):
 
 class Day4Advanced(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window15 = None
 
@@ -2204,7 +2204,7 @@ class ArmsShoulders4Adv(Page):
 
 class Day5Beginner(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window16 = None
 
@@ -2492,7 +2492,7 @@ class Leg5Begin(Page):
 
 class Day5Intermediate(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window17 = None
 
@@ -2739,7 +2739,7 @@ class Arms5Inter(Page):
 
 class Day5Advanced(Frame):
     def __init__(self, second_window):
-        Frame.__init__(self)
+        super().__init__()
         self.second_window = second_window
         self.window18 = None
 
